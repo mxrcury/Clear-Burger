@@ -1,0 +1,125 @@
+html {
+    box-sizing: border-box;
+  }
+  
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+  
+body {
+    padding: 0;
+    margin: 0;
+    letter-spacing: 0.48px;
+}
+ul{
+    margin: 0;
+    padding: 0;
+}
+li{
+    list-style-type: none;
+    margin: 0;
+    padding:0;
+}
+a{
+    font-size: 90px;
+}
+
+@import url('../fonts/SFPRODISPLAYREGULAR.OTF');
+$font-family:'SF Pro Display',sans-serif;
+.burger{
+    position: relative;
+    z-index: 10;
+    margin: 30px 0 0 30px;
+    width: 50px;
+    height: 35px;
+    transition: .3s ease;
+    cursor: pointer;
+    &__line{
+        transition: .3s ease;
+        position: absolute;
+        width: 100%;
+        height: 5px;
+        border-radius: 8px;
+        background: #2f2f2f;
+    }
+    &__line--first{
+        top: 0;
+    }
+    &__line--second{
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    &__line--third{
+     bottom: 0;   
+    }
+    &.active{
+        .burger__line{
+            background: white;
+        }
+        .burger__line--first{
+            top: 50%;
+            transform: translateY(-50%) rotate(-45deg);
+        }
+        .burger__line--second{
+            opacity: 0;
+        }
+        .burger__line--third{
+            bottom:50%;
+            transform: translateY(50%) rotate(45deg); 
+        }
+         
+    }
+}
+.menu{
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #2f2f2f;
+    transition: .4s ease;
+    transform: translateX(200%);
+    &.active{
+        transform: translateX(110px);
+    }
+}
+.menu-list{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%);
+    position: absolute;
+}
+.menu__item{
+    margin-bottom: 60px;
+    &:last-child{
+        margin-bottom: 0;
+    }
+}
+.menu__link{
+    font-family: $font-family;
+    font-size: 38px;
+    color:white;
+    text-decoration: none;
+    &:hover{
+        color: rgb(168, 168, 168);
+    }
+}
+.overlay{
+    position:fixed;
+    z-index: 9;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:rgba($color: #000000, $alpha: 0.5);
+    opacity: 0;
+    transition: .4s ease;
+    &.active{
+        opacity: 1;
+    }
+}
